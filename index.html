@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html title="Oui">
 <body>
     <p id="demo"></p>   
 <script>
 window.onload = function() { setInterval( timeLeft, 100); }
 
 function timeLeft() {
-    var diff = new Date(2020,12,1,00,00) - new Date();
+    var diff = new Date(2020,11,1) - new Date();
 
     var days = Math.floor(diff / (1000 * 60 * 60 * 24));
     diff -=  days * (1000 * 60 * 60 * 24);
@@ -19,7 +19,6 @@ function timeLeft() {
 
     var seconds = Math.floor(diff / (1000));
     diff -= seconds * (1000);
-
     document.getElementById("demo").innerHTML = days + " jours, " + hours + " heures, " + mins + " minutes, " + seconds + " secondes avant de voir des gens légalement";
 }
 </script>
