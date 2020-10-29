@@ -1,9 +1,34 @@
 <!DOCTYPE html>
-<html title="Oui">
-<body>
-    <p id="demo"></p>   
+<html>
+<head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    
+        <title>Yakoi</title>
+    </head>
+    <body style="background-color: bisque;">
+        <div class=”container-fluid h-100”>
+            <div class="row justify-content-center align-self-center">
+                    <h1 id="timeLeft"></h1>
+                    &nbsp;&nbsp;
+                    <h1 id="rdmText"></h1>
+            </div>
+        </div>
 <script>
-window.onload = function() { setInterval( timeLeft, 100); }
+window.onload = function() { setInterval( init, 100) }
+var wait = 0;
+
+function init()
+{
+    timeLeft();
+    if ((wait % 20) == 0)
+        randomText();
+    wait++;
+}
 
 function timeLeft() {
     var diff = new Date(2020,11,1) - new Date();
@@ -19,8 +44,14 @@ function timeLeft() {
 
     var seconds = Math.floor(diff / (1000));
     diff -= seconds * (1000);
-    document.getElementById("demo").innerHTML = days + " jours, " + hours + " heures, " + mins + " minutes, " + seconds + " secondes avant de voir des gens légalement";
+    document.getElementById("timeLeft").innerHTML = days + " jours, " + hours + "h " + mins + "min " + seconds + "s avant";
+}
+function randomText() {
+    var dic = ["de voir des gens légalement", "le 1er décembre", "de marcher dans la rue tranquille", "de faire un repas avec les potes"];
+    document.getElementById("rdmText").innerHTML = dic[Math.floor(Math.random() * dic.length)];
 }
 </script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
 </body>
 </html>
